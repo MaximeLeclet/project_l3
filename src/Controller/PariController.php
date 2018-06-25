@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class PariController extends Controller
 {
 
-    function PariIndexAction()
+    function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -16,13 +16,15 @@ class PariController extends Controller
         return $this->render("Pari/index.html.twig", array('paris' => $paris));
     }
 
-    function PariCreateAction()
+    function newAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'http://daudenthun.fr/api/listing');
+        $matchs =  json_decode($res->getBody(),true);
 
-        $matchs = $em->getRepository("App\Entity\Matchs")->findAll();
-
-        return $this->render("Pari/create.html.twig", array('matchs' => $matchs));
+        return $this->render("Pari/new.html.twig", array(
+            'results' => $matchs
+        ));
     }
 
 
