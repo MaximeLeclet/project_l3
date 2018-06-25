@@ -5,3 +5,13 @@
 app_accueil_index:
   path: /
   controller: App\Controller\AccueilController::indexAction
+
+app_posts_index :
+    path : /livescore
+    controller : App\Controller\MatchsController::index
+
+app_posts_views :
+    path : /livescore/team/{id}
+    controller : App\Controller\PostsController::viewPost
+    requirements:
+            id: \d+
