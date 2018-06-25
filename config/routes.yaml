@@ -13,3 +13,13 @@ app_pari_index:
 app_pari_create:
   path: /pari/create
   controller: App\Controller\PariController::PariCreateAction
+
+app_posts_index :
+    path : /livescore
+    controller : App\Controller\MatchsController::index
+
+app_posts_views :
+    path : /livescore/team/{id}
+    controller : App\Controller\PostsController::viewPost
+    requirements:
+            id: \d+
