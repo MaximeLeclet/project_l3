@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+
+    Page des paris
+
+{% endblock %}
+
+{% block body %}
+
+    Créer un pari:
+
+    Listing des paris :
+    <ul>
+
+        {% for pari in paris %}
+            <li>
+                <p>{{ pari.body }}</p>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+{% endblock %}

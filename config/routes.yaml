@@ -5,3 +5,11 @@
 app_accueil_index:
   path: /
   controller: App\Controller\AccueilController::indexAction
+
+app_pari_index:
+  path: /pari
+  controller: App\Controller\PariController::PariIndexAction
+
+app_pari_create:
+  path: /pari/create
+  controller: App\Controller\PariController::PariCreateAction
