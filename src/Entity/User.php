@@ -4,16 +4,20 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields="email", message="Email déjà pris")
- * @UniqueEntity(fields="username", message="Username déjà pris")
  */
 class User implements UserInterface, \Serializable
 {
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Team")
+     */
+    private $team;
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -22,7 +26,7 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @ORM\Column(type="string", length=25, unique=false)
      */
     private $username;
 
@@ -32,7 +36,7 @@ class User implements UserInterface, \Serializable
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=124, unique=true)
+     * @ORM\Column(type="string", length=124, unique=false)
      */
     private $email;
 
@@ -47,7 +51,7 @@ class User implements UserInterface, \Serializable
     /**
      * @param mixed $id
      */
-    public function setId($id): void
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -63,7 +67,7 @@ class User implements UserInterface, \Serializable
     /**
      * @param mixed $email
      */
-    public function setEmail($email): void
+    public function setEmail($email)
     {
         $this->email = $email;
     }
@@ -79,7 +83,7 @@ class User implements UserInterface, \Serializable
     /**
      * @param mixed $isActive
      */
-    public function setIsActive($isActive): void
+    public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
     }
@@ -92,8 +96,8 @@ class User implements UserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true;
-// may not be needed, see section on salt below
-// $this->salt = md5(uniqid('', true));
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid('', true));
     }
 
     public function getUsername()
@@ -103,8 +107,8 @@ class User implements UserInterface, \Serializable
 
     public function getSalt()
     {
-// you *may* need a real salt depending on your encoder
-// see section on salt below
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
         return null;
     }
 
@@ -129,8 +133,8 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
-// see section on salt below
-// $this->salt,
+            // see section on salt below
+            // $this->salt,
         ));
     }
 
@@ -141,8 +145,35 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
-// see section on salt below
-// $this->salt
+            // see section on salt below
+            // $this->salt
             ) = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+
+    public function getTeam()
+    {
+        return $this->team;
+    }
+
+    public function setTeam($team)
+    {
+        $this->team = $team;
+
+        return $this;
     }
 }

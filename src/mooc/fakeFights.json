@@ -1,0 +1,22 @@
+{
+  "FRANCE": {
+    "vs": "PORTUGAL",
+    "date":"22/06/2018",
+    "score":{"0":"10000", "1":"0"},
+    "live":false
+  },
+
+  "FRANCE": {
+    "vs": "ALLEMAGNE",
+    "date":"23/06/2018",
+    "score":{"0":"7", "1":"0"},
+    "live":false
+  },
+
+  "FRANCE": {
+    "vs": "BRESIL",
+    "date":"22/06/2018",
+    "score":{"10000":"", "0":""},
+    "live":false
+  }
+}
