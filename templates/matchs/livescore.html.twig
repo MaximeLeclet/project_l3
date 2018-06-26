@@ -5,11 +5,11 @@
     <br><br>
     <div class="container">
         <table id="livescore" class="table table-bordered">
-            <thead style="background: red">
-                <tr>
+            <thead>
+                <tr row-name>
                     <th>#</th>
-                    <th>date</th>
-                    <th></th>
+                    <th class="text-center">date</th>
+                    <th class="text-center">Direct</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -20,14 +20,18 @@
             {% set i = 1 %}
             {% for equipes in results %}
             {% for equipe,match in equipes %}
-                <tr>
+                <tr row-content>
                     <td class="text-center">{{ i }}</td>
                     <td class="text-center">{{ match.date }}</td>
-                    <td class="text-center"><span class="label label-success">{{ match.live }}</span> </td>
+                    <td class="text-center">{{ (match.live == true ) ? '<span class="label label-success">Non</span>' : '<span class="label label-danger">Non</span>' }} </td>
                     <td class="text-center">{{ equipe }}</td>
                     <td class="text-center">  {{ match.score.0 }} - {{ match.score.1 }} </td>
                     <td class="text-center">{{ match.vs }}</td>
-                    <td class="text-center"><button class="btn btn-info btn-xs" data-title="" >Parier</button></td>
+                    <td class="text-center">
+                        <a class="btn btn-info edit" href="path/to/settings" aria-label="Settings">
+                            Parier
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
                 {%  set i = i + 1 %}
