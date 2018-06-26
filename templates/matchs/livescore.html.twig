@@ -4,12 +4,13 @@
 {% block body %}
     <br><br>
     <div class="container">
-        <table id="livescore" class="table table-bordered">
-            <thead style="background: red">
-                <tr>
+        <br><br><div class="row">
+        <table id="livescore" class="table table-striped">
+            <thead>
+                <tr row-name>
                     <th>#</th>
-                    <th>date</th>
-                    <th></th>
+                    <th class="text-center">Date</th>
+                    <th class="text-center">Direct</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -20,19 +21,24 @@
             {% set i = 1 %}
             {% for equipes in results %}
             {% for equipe,match in equipes %}
-                <tr>
+                <tr row-content>
                     <td class="text-center">{{ i }}</td>
                     <td class="text-center">{{ match.date }}</td>
-                    <td class="text-center"><span class="label label-success">{{ match.live }}</span> </td>
+                    <td class="text-center">{{ (match.live == true ) ? '<span class="label label-success">Non</span>' : '<span class="label label-danger">Non</span>' }} </td>
                     <td class="text-center">{{ equipe }}</td>
                     <td class="text-center">  {{ match.score.0 }} - {{ match.score.1 }} </td>
                     <td class="text-center">{{ match.vs }}</td>
-                    <td class="text-center"><button class="btn btn-info btn-xs" data-title="" >Parier</button></td>
+                    <td class="text-center">
+                        <a class="btn btn-top" style="margin-right: 15px;" href="#" class="btn btn-primary btn-success pull-right">
+                            <span class="glyphicon glyphicon-eur"></span> &nbsp Parier
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
                 {%  set i = i + 1 %}
             {% endfor %}
             </tbody>
         </table>
+    </div>
     </div>
 {% endblock %}

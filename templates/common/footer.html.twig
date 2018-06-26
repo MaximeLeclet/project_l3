@@ -12,25 +12,30 @@
     </div>
 </div>
 
-<script type="text/javascript" src="{{ asset("lib/jquery/jquery.browser.min.js") }}" ></script>
-<script type="text/javascript" src="{{ asset("lib/DataTables/media/js/jquery.dataTables.min.js") }}" ></script>
-<script type="text/javascript" src="{{ asset("lib/bootstrap-3.3.7-dist/js/bootstrap.min.js") }}" ></script>
-<script type="text/javascript" src="{{ asset("lib/DataTables/media/js/dataTables.bootstrap.min.js") }}" ></script>
-<script type="text/javascript" src="{{ asset("lib/bootstrap-3.3.7-dist/js/bootstrap.min.js") }}" ></script>
-<script type="text/javascript" src="{{ asset("lib/sweetalert/es6-promise.auto.min.js") }}" ></script>
-<script type="text/javascript" src="{{ asset("lib/sweetalert/sweetalert2.all.min.js") }}" ></script>
-<script type="text/javascript" src="{{ asset("js/livescore.js") }}" ></script>
 
-<script>
-    $("#livescore").DataTable({
-        pagingType : "simple_numbers",
-        lengthMenu : [[ 5,10,-1], ["5","10"," Voir Tout"]],
-        pageLenght : 5,
-        language : {
-            url : "{{ asset("lib/DataTables/media/French.json") }}"
-        }
-    });
-</script>
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset("lib/jquery/jquery.browser.min.js") }}" ></script>
+    <script type="text/javascript" src="{{ asset("lib/DataTables/media/js/jquery.dataTables.min.js") }}" ></script>
+    <script type="text/javascript" src="{{ asset("lib/bootstrap-3.3.7-dist/js/bootstrap.min.js") }}" ></script>
+    <script type="text/javascript" src="{{ asset("lib/DataTables/media/js/dataTables.bootstrap.min.js") }}" ></script>
+    <script type="text/javascript" src="{{ asset("lib/bootstrap-3.3.7-dist/js/bootstrap.min.js") }}" ></script>
+    <script type="text/javascript" src="{{ asset("lib/sweetalert/es6-promise.auto.min.js") }}" ></script>
+    <script type="text/javascript" src="{{ asset("lib/sweetalert/sweetalert2.all.min.js") }}" ></script>
+    <script type="text/javascript" src="{{ asset("js/livescore.js") }}" ></script>
+    <script>
+        $("#livescore").DataTable({
+            pagingType : "simple_numbers",
+            lengthMenu : [[ 5,10,-1], ["5","10"," Voir Tout"]],
+            pageLenght : 5,
+            language : {
+                url : "{{ asset("lib/DataTables/media/French.json") }}"
+            }
+        });
+    </script>
+{% endblock %}
+
+
+
 
 
 

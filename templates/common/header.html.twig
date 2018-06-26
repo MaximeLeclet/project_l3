@@ -1,6 +1,6 @@
 {% block stylesheets %}
     <!-- Latest compiled and minified CSS -->
-    <link href="{{ asset("lib/bootstrap-3.3.7-dist/css/bootstrap.min.css")  }}" type="text/css" rel="stylesheet" >
+    <link href="{{ asset("lib/bootstrap-3.3.7-dist/css/bootstrap.min.css") }}" type="text/css" rel="stylesheet" >
     <link href="{{ asset("lib/DataTables/media/css/dataTables.bootstrap.min.css") }}" type="text/css" rel="stylesheet">
     <link href="{{ asset("lib/sweetalert/sweetalert2.min.css") }}" rel="stylesheet">
     <link href="{{ asset("lib/font-awesome-4.7.0/css/font-awesome.min.css") }}" rel="stylesheet">
@@ -8,16 +8,18 @@
 
     <link rel="icon" type="image/png" href="{{ asset('img/cup.jpg') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/footer.css') }}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/livescore.css') }}" >
 
 {% endblock %}
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"><img src="{{ asset('img/cup.jpg') }}" width="25">Live Score - Football</a>
+            <a class="navbar-brand" href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i>
+                Live Score - Football</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="#">Matchs</a></li>
+            <li><a href="/livescore">Matchs</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Team
                     <span class="caret"></span></a>
@@ -30,6 +32,3 @@
         </ul>
     </div>
 </nav>
-
-
-

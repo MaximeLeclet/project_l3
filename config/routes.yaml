@@ -4,7 +4,7 @@
 
 app_accueil_index:
   path: /
-  controller: App\Controller\AccueilController::indexAction
+  controller: App\Controller\MatchsController::index
 
 app_pari_index:
   path: /pari
@@ -24,10 +24,10 @@ app_posts_views :
     requirements:
             id: \d+
 
-app_user_index:
-  path: /users
-  controller: App\Controller\UserController::indexAction
+#app_user_index:
+ # path: /users
+  #controller: App\Controller\UserController::indexAction
 
-pp_user_new:
-  path: /users/new
-  controller: App\Controller\UserController::newAction
+#pp_user_new:
+ # path: /users/new
+  #controller: App\Controller\UserController::newAction
