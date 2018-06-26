@@ -16,7 +16,6 @@
         "symfony/form": "^4.1",
         "symfony/framework-bundle": "^4.1",
         "symfony/lts": "^4@dev",
-        "symfony/maker-bundle": "^1.5",
         "symfony/orm-pack": "^1.0",
         "symfony/phpunit-bridge": "^4.1",
         "symfony/security-bundle": "^4.1",
@@ -24,12 +23,14 @@
         "symfony/validator": "^4.1",
         "symfony/web-profiler-bundle": "^4.1",
         "symfony/yaml": "^4.1",
+        "twig/extensions": "^1.5",
         "twig/twig": "^2.4"
     },
     "require-dev": {
         "symfony/browser-kit": "^4.1",
         "symfony/css-selector": "^4.1",
         "symfony/dotenv": "^4.1",
+        "symfony/maker-bundle": "^1.5",
         "symfony/web-server-bundle": "^4.1"
     },
     "config": {
