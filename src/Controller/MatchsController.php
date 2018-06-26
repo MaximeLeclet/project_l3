@@ -19,6 +19,7 @@ class MatchsController extends Controller
 {
     /**
      *
+     * return @array
      */
     function index() {
 
