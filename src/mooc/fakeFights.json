@@ -19,4 +19,25 @@
     "score":{"0":"4", "1":"2"},
     "live":false
   }
+
+[
+  {"Maroc":
+  { "vs":"Iran",
+    "date":"15\/06\/2018",
+    "score":[0,1],"live":false}
+  },
+  {"Portugal":
+  {"vs":"Espagne",
+    "date":"15\/06\/2018",
+    "score":[3,3],
+    "live":false}
+  },
+  {"France":
+  {"vs":"Australie",
+    "date":"16\/06\/2018",
+    "score":[3,3],
+    "live":false}
+  }
+]
+
 }
