@@ -7,11 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class AccueilController extends Controller
 {
 
-    function indexAction()
-    {
+    function indexAction() {
 
-        return $this->render("accueil/index.html.twig", array());
+        return $this->render("Accueil/index.html.twig", array());
 
     }
 
 }
+

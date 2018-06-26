@@ -5,3 +5,11 @@
 app_accueil_index:
   path: /
   controller: App\Controller\AccueilController::indexAction
+
+app_user_index:
+  path: /users
+  controller: App\Controller\UserController::indexAction
+
+pp_user_new:
+  path: /users/new
+  controller: App\Controller\UserController::newAction

@@ -7,8 +7,9 @@
 
         {% endblock %}
     </head>
-    {{ include('common/header.html.twig') }}
+
     <body>
+        {{ include('common/header.html.twig') }}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
         {{ include('common/footer.html.twig') }}
