@@ -11,7 +11,7 @@ app_pari_index:
   controller: App\Controller\PariController::indexAction
 
 app_pari_new:
-  path: /pari/new
+  path: /pari/new/{equipe1}/{equipe2}
   controller: App\Controller\PariController::newAction
 
 app_posts_index :
