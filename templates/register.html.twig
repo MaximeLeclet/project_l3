@@ -2,11 +2,19 @@
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-lg-1 col-centered">
-            <div class="well">
-
-                <legend><i class="fa fa-lock" aria-hidden="true"></i> Création de compte</legend>
+    <div class="container" >
+    <div class="row" id="login-box" style="margin-top:5%">
+    <div class="col-md-8 col-md-offset-2 ">
+        <div class="page-header">
+            <h1 class="logo"> Livescore <small>Join us</small></h1>
+        </div>
+        <div class="panel panel-default" style="box-shadow: 0 5px 15px rgba(0,0,0,.5);">
+            <div class="panel-body">
+                <h4 class="content-box-header content-box-header-alt bg-default">
+                                           <span class="header-wrapper">
+                                               <legend><i class="fa fa-futbol-o" aria-hidden="true"></i> Création de compte!</legend><small></small>
+                                           </span>
+                </h4><br/>
 
                 {{ form_start(form) }}
 
@@ -37,14 +45,13 @@
                         {{ form_widget(form.password.second) }}
                     </div>
 
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i> S'inscrire
-                    </button>
+                <button type="submit" id="loginBtn" class="btn  btn-info btn-lg btn-block" role="button">S'inscrire</button><br/>
 
                 {{ form_end(form) }}
-
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
 {% endblock %}

@@ -7,34 +7,44 @@
         </div>
     {% endif %}
 
-    <div class="row">
-        <div class="col-lg-1 col-centered">
-            <div class="well">
-                <form action="{{ path('security_login') }}" method="post">
-                    <fieldset>
+    <div class="container" >
+        <div class="row" id="login-box" style="margin-top:5%">
+            <div class="col-md-8 col-md-offset-2 ">
+                <div class="page-header">
+                    <h1 class="logo"> Livescore <small>Be win with us</small></h1>
+                </div>
+                <div class="panel panel-default" style="box-shadow: 0 5px 15px rgba(0,0,0,.5);">
+                    <div class="panel-body">
+                        <h4 class="content-box-header content-box-header-alt bg-default">
+                                           <span class="header-wrapper">
+                                               <legend><i class="fa fa-futbol-o" aria-hidden="true"></i> Connectez-vous!</legend><small></small>
+                                           </span>
+                        </h4><br/>
 
-                        <legend><i class="fa fa-lock" aria-hidden="true"></i> Connexion</legend>
+                        <form action="{{ path('security_login') }}" method="post">
+                            <fieldset>
 
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
-                        </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                        <input type="text" id="username" name="_username" placeholder="Username" value="{{ last_username }}" class="form-control"/>
+                                    </div>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="password">Mot de passe</label>
-                            <input type="password" id="password" name="_password" class="form-control" />
-                        </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                        <input type="password" id="password" placeholder="Mot de passe" name="_password" class="form-control" />
+                                    </div>
+                                </div>
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
 
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                                <button type="submit" id="loginBtn" class="btn  btn-info btn-lg btn-block" role="button">Connexion</button><br/>
 
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i> Connexion
-                        </button>
-
-                        <a href="{{ path('user_registration') }}">Créer un compte</a>
-
-                    </fieldset>
-                </form>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

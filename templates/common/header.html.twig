@@ -34,10 +34,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             {% if app.user %}
-                <li><a href="#">{{ app.user.username }}</a></li>
+                <li style="color:#fff"> <a href="#">{{ app.user.username }}</a></li>
                 <a href="{{ path('security_logout')}}" class="btn navbar-btn btn-default btn-sm"> <span class="glyphicon glyphicon-log-out"></span> Déconnexion  </a>&nbsp;
             {% else %}
                 <a href="{{ path('security_login')}}" class="btn navbar-btn btn-default"><span class="glyphicon glyphicon-log-out"></span> Connexion</a> &nbsp;
+                <a href="{{ path('user_registration')}}" class="btn navbar-btn btn-default btn-sm"> <span class="glyphicon glyphicon-log-out"></span> Créer un compte  </a>&nbsp;
             {% endif %}
         </ul>
 
