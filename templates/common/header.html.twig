@@ -7,10 +7,25 @@
     <script type="text/javascript" src="{{ asset("lib/jquery/jquery.js") }}" ></script>
 
     <link rel="icon" type="image/png" href="{{ asset('img/cup.jpg') }}" />
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/footer.css') }}" >
     <link rel="stylesheet" type="text/css" href="{{ asset('css/livescore.css') }}" >
 
 {% endblock %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -20,6 +35,22 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="/livescore">Matchs</a></li>
+
+            {% if app.user %}
+
+                <li><a href="#">{{ app.user.username }}</a></li>
+                <li><a href="{{ path('security_logout')}}"> Déconnexion</a></li>
+
+            {% else %}
+
+                <li><a href="{{ path('security_login')}}"> Connexion</a></li>
+
+            {% endif %}
+
+            {#<li><a href="#">
+                    Compétition
+                </a></li>#}
+
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Team
                     <span class="caret"></span></a>
