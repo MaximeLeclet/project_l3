@@ -4,11 +4,12 @@
 {% block body %}
     <br><br>
     <div class="container">
-        <table id="livescore" class="table table-bordered">
+        <br><br><div class="row">
+        <table id="livescore" class="table table-striped">
             <thead>
-                <tr row-name>
+                <tr class="row-name">
                     <th>#</th>
-                    <th class="text-center">date</th>
+                    <th class="text-center">Date</th>
                     <th class="text-center">Direct</th>
                     <th></th>
                     <th></th>
@@ -28,8 +29,8 @@
                     <td class="text-center">  {{ match.score.0 }} - {{ match.score.1 }} </td>
                     <td class="text-center">{{ match.vs }}</td>
                     <td class="text-center">
-                        <a class="btn btn-info edit" href="{{ path('app_pari_new', {'equipe1':equipe, 'equipe2':match.vs }) }}" aria-label="Settings">
-                            Parier
+                        <a class="btn btn-top" style="margin-right: 15px;" href="{{ path('app_pari_new', {'equipe1':equipe, 'equipe2':match.vs }) }}" class="btn btn-primary btn-success pull-right">
+                            <span class="glyphicon glyphicon-eur"></span> &nbsp Parier
                         </a>
                     </td>
                 </tr>
@@ -38,5 +39,6 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
     </div>
 {% endblock %}

@@ -13,7 +13,7 @@ a.del
 a.edit
 {
     padding-left:10px;
-    background:#337ab7;
+    background:#1a8cff;
     color:#fff;
     border-radius:2px;
     border:none;
@@ -22,7 +22,7 @@ a.edit
 tr.row-name
 {
     font-size: 18px;
-    color:#448aff;
+    color:#1a8cff;
 }
 
 tr.row-content
@@ -32,7 +32,7 @@ tr.row-content
 
 table
 {
-    border-bottom: 8px solid #448aff;
+    border-bottom: 8px solid #1a8cff;
 }
 
 td.check
@@ -57,11 +57,15 @@ a.btn-danger
 
 a.btn-top
 {
-    background:#448aff;
+    background:#1a8cff;
     color:#fff;
-    border:1px solid #448aff;
+    border:1px solid #0080ff;
     padding: 7px 10px;
     border-radius:4px;
+}
+
+a.btn-top:hover {
+    color : #fff;
 }
 
 a.btn-top:hover
@@ -72,3 +76,6 @@ a.btn-top:hover
 }
 
 /* Table css End */
+
+
+
