@@ -23,15 +23,17 @@
             {% for equipe,match in equipes %}
                 <tr row-content>
                     <td class="text-center">{{ i }}</td>
-                    <td class="text-center">{{ match.date}}</td>
+                    <td class="text-center">{{ match.date }}</td>
                     <td class="text-center">{{ (match.live == true ) ? '<span class="label label-success">Non</span>' : '<span class="label label-danger">Non</span>' }} </td>
                     <td class="text-center">{{ equipe }}</td>
                     <td class="text-center">  {{ match.score.0 }} - {{ match.score.1 }} </td>
                     <td class="text-center">{{ match.vs }}</td>
                     <td class="text-center">
+                        {%  if (match.live != true and match.score.0 == null and match.score.1 == null ) %}
                         <a style="margin-right: 15px;" href="{{ path('app_pari_new', {'equipe1':equipe, 'equipe2':match.vs }) }}" class="btn btn-top btn-primary btn-success pull-right">
                             <span class="glyphicon glyphicon-eur"></span> &nbsp Parier
                         </a>
+                        {%  endif %}
                     </td>
                 </tr>
             {% endfor %}
