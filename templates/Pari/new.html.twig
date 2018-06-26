@@ -8,18 +8,8 @@
 
 {% block body %}
 
-    <div class="container">
-        <ul class="list-group">
-            {% for equipes in results %}
-                {% for equipe,match in equipes %}
-                    <li class="list-group-item" >
-                        <span style="color: #000;"> {{ equipe }} {{ match.score.0 }}</span><br>
-                        <span style="color: #000;"> {{ match.vs }} {{ match.score.1 }}</span>
-                        <span style="color: #000;"> {{ match.date }}</span>
-                    </li>
-                {% endfor %}
-            {% endfor %}
-        </ul>
-    </div>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
 
 {% endblock %}

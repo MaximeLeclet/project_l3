@@ -28,7 +28,7 @@
                     <td class="text-center">  {{ match.score.0 }} - {{ match.score.1 }} </td>
                     <td class="text-center">{{ match.vs }}</td>
                     <td class="text-center">
-                        <a class="btn btn-info edit" href="path/to/settings" aria-label="Settings">
+                        <a class="btn btn-info edit" href="{{ path('app_pari_new', {'equipe1':equipe, 'equipe2':match.vs }) }}" aria-label="Settings">
                             Parier
                         </a>
                     </td>
