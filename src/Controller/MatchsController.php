@@ -38,10 +38,7 @@ class MatchsController extends Controller
             }
             $i++;
         }
-
-        var_dump($livescore);
-
-        return $this->render("matchs/livescore.html.twig", array('results'=>$datas));
+        return $this->render("matchs/livescore.html.twig", array('results'=>$livescore));
     }
 
 }
