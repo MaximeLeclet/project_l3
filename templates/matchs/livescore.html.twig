@@ -2,18 +2,41 @@
 
 {% block title %} Football Livescore {% endblock %}
 {% block body %}
-    <div>Football Livescore </div>
+    <br><br>
     <div class="container">
-        <ul class="list-group">
+        <table id="livescore" class="table table-bordered">
+            <thead>
+                <tr row-name>
+                    <th>#</th>
+                    <th class="text-center">date</th>
+                    <th class="text-center">Direct</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% set i = 1 %}
             {% for equipes in results %}
-                {% for equipe,match in equipes %}
-                    <li class="list-group-item" >
-                        <span style="color: #000;"> {{ equipe }} {{ match.score.0 }}</span><br>
-                        <span style="color: #000;"> {{ match.vs }} {{ match.score.1 }}</span>
-                        <span style="color: #000;"> {{ match.date }}</span>
-                    </li>
-                {% endfor %}
+            {% for equipe,match in equipes %}
+                <tr row-content>
+                    <td class="text-center">{{ i }}</td>
+                    <td class="text-center">{{ match.date }}</td>
+                    <td class="text-center">{{ (match.live == true ) ? '<span class="label label-success">Non</span>' : '<span class="label label-danger">Non</span>' }} </td>
+                    <td class="text-center">{{ equipe }}</td>
+                    <td class="text-center">  {{ match.score.0 }} - {{ match.score.1 }} </td>
+                    <td class="text-center">{{ match.vs }}</td>
+                    <td class="text-center">
+                        <a class="btn btn-info edit" href="path/to/settings" aria-label="Settings">
+                            Parier
+                        </a>
+                    </td>
+                </tr>
             {% endfor %}
-        </ul>
+                {%  set i = i + 1 %}
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}
