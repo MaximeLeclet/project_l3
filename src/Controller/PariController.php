@@ -24,15 +24,17 @@ class PariController extends Controller
 
     function newAction(Request $request)
     {
+        if (!$this->getUser()) {return $this->redirectToRoute('security_login'); }
+
        // just setup a fresh $post object (remove the dummy data)
-        $post = new Pari();
+        $pari = new Pari();
 
         $urls = explode('/', $request->getUri());
         $equipe_1 = $urls[5];
         $equipe_2 = $urls[6];
 
 
-        $form = $this->createFormBuilder($post)
+        $form = $this->createFormBuilder($pari)
             ->add('equipe1', TextType::class, array('label' => 'Equipe No 1', 'data' => $equipe_1))
             ->add('equipe2', TextType::class, array('label' => 'Equipe No 2', 'data' => $equipe_2))
             ->add('score_equipe1', TextType::class)
@@ -45,15 +47,18 @@ class PariController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             // but, the original `$post` variable has also been updated
-            $post = $form->getData();
+            $pari = $form->getData();
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($post);
+
+            $pari->setUser($this->getUser());
+
+            $entityManager->persist($pari);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_pari_new');
+            return $this->redirectToRoute('app_accueil_index');
         }
 
         return $this->render('Pari/new.html.twig',  array(
