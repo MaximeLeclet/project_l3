@@ -23,9 +23,11 @@ class MatchsController extends Controller
      */
     function index() {
 
-        $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'http://daudenthun.fr/api/listing');
-        $datas =  json_decode($res->getBody(),true);
+        $datas =  json_decode($this->mooc(),true);
+
+        //$client = new \GuzzleHttp\Client();
+        //$res = $client->request('GET', 'http://http://daudenthun.fr/api/listing');
+        //$datas =  json_decode($res->getBody(),true);
         $livescore = array();
         $i = 0;
         foreach ($datas as $teams){
@@ -39,7 +41,13 @@ class MatchsController extends Controller
             }
             $i++;
         }
+
         return $this->render("matchs/livescore.html.twig", array('results'=>$livescore));
+    }
+
+    function mooc()
+    {
+        return file_get_contents("/var/www/html/project_l3/src/mooc/fakeFights.json");
     }
 
 }

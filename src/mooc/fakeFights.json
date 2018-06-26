@@ -1,43 +1,83 @@
-{
+[
+
+  {
   "FRANCE": {
     "vs": "PORTUGAL",
-    "date":"22/06/2018",
-    "score":{"0":"10000", "1":"0"},
-    "live":false
+    "date":"22\/06\/2018",
+    "score":[10000, 0],
+    "live":false}
   },
 
+  {
   "FRANCE": {
     "vs": "ALLEMAGNE",
-    "date":"23/06/2018",
-    "score":{"0":"7", "1":"0"},
-    "live":false
+    "date":"23\/06\/2018",
+    "score":[7, 0],
+    "live":false}
   },
 
-  "FRANCE": {
-    "vs": "BRESIL",
-    "date":"24/06/2018",
-    "score":{"0":"4", "1":"2"},
-    "live":false
-  }
+  {
+    "FRANCE": {
+      "vs": "BRESIL",
+      "date":"24\/06\/2018",
+      "score":[4, 2],
+      "live":false}
+  },
 
-[
-  {"Maroc":
-  { "vs":"Iran",
+  {
+    "FRANCE": {
+      "vs": "FUTUR",
+      "date":"28\/06\/2018",
+      "score":[40000, 2000],
+      "live":false}
+  },
+
+  {
+    "FRANCE": {
+      "vs": "FUTUR2",
+      "date":"29\/06\/2018",
+      "score":null,
+      "live":true}
+  },
+
+  {
+    "FRANCE": {
+      "vs": "FUTURGOOD",
+      "date":"5\/07\/2018",
+      "score":null,
+      "live":false}
+  },
+
+
+  {
+    "FRANCE": {
+      "vs": "FUTURGOOD2",
+      "date":"6\/07\/2018",
+      "score":null,
+      "live":false}
+  },
+
+  {
+  "Maroc": {
+    "vs":"Iran",
     "date":"15\/06\/2018",
-    "score":[0,1],"live":false}
+    "score":[0,1],
+    "live":false}
   },
-  {"Portugal":
-  {"vs":"Espagne",
+
+  {
+  "Portugal": {
+    "vs":"Espagne",
     "date":"15\/06\/2018",
     "score":[3,3],
     "live":false}
   },
-  {"France":
-  {"vs":"Australie",
+
+  {
+  "France": {
+    "vs":"Australie",
     "date":"16\/06\/2018",
     "score":[3,3],
     "live":false}
   }
 ]
-
-}
