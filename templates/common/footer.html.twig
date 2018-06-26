@@ -26,8 +26,8 @@
     <script>
         $("#livescore").DataTable({
             pagingType : "simple_numbers",
-            lengthMenu : [[ 5,10,-1], ["5","10"," Voir Tout"]],
-            pageLenght : 5,
+            lengthMenu : [[10,-1], ["10"," Voir Tout"]],
+            pageLenght : 10,
             language : {
                 url : "{{ asset("lib/DataTables/media/French.json") }}"
             }
