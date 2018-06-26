@@ -17,7 +17,7 @@ class User implements UserInterface, \Serializable
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity=App\Entity\Team)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Team")
      */
     private $team;
 
@@ -65,7 +65,7 @@ class User implements UserInterface, \Serializable
     /**
     * @var int
 
-    * @ORM\Column(type="integer")
+    * @ORM\Column(type="integer", nullable=true)
     */
     private $points;
 
