@@ -23,7 +23,7 @@
             {% for equipe,match in equipes %}
                 <tr row-content>
                     <td class="text-center">{{ i }}</td>
-                    <td class="text-center">{{ match.date }}</td>
+                    <td class="text-center">{{ match.date}}</td>
                     <td class="text-center">{{ (match.live == true ) ? '<span class="label label-success">Non</span>' : '<span class="label label-danger">Non</span>' }} </td>
                     <td class="text-center">{{ equipe }}</td>
                     <td class="text-center">  {{ match.score.0 }} - {{ match.score.1 }} </td>
