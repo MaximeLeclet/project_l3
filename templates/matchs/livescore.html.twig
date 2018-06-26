@@ -29,7 +29,7 @@
                     <td class="text-center">  {{ match.score.0 }} - {{ match.score.1 }} </td>
                     <td class="text-center">{{ match.vs }}</td>
                     <td class="text-center">
-                        <a class="btn btn-top" style="margin-right: 15px;" href="{{ path('app_pari_new', {'equipe1':equipe, 'equipe2':match.vs }) }}" class="btn btn-primary btn-success pull-right">
+                        <a style="margin-right: 15px;" href="{{ path('app_pari_new', {'equipe1':equipe, 'equipe2':match.vs }) }}" class="btn btn-top btn-primary btn-success pull-right">
                             <span class="glyphicon glyphicon-eur"></span> &nbsp Parier
                         </a>
                     </td>
