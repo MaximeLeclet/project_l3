@@ -35,14 +35,9 @@
         <ul class="nav navbar-nav navbar-right">
             {% if app.user %}
                 <li><a href="#">{{ app.user.username }}</a></li>
-                    <button type="button" class="btn navbar-btn btn-default btn-sm">
-                        <a href="{{ path('security_logout')}}"> <span class="glyphicon glyphicon-log-in"></span> Déconnexion  </a>
-                    </button>&nbsp;&nbsp;
+                <a href="{{ path('security_logout')}}" class="btn navbar-btn btn-default btn-sm"> <span class="glyphicon glyphicon-log-out"></span> Déconnexion  </a>
             {% else %}
-                    <button type="button" class="btn navbar-btn btn-default">
-                        <a href="{{ path('security_login')}}"><span class="glyphicon glyphicon-log-out"></span> Connexion</a>
-                    </button>&nbsp;&nbsp;
-
+                <a href="{{ path('security_login')}}" class="btn navbar-btn btn-default"><span class="glyphicon glyphicon-log-out"></span> Connexion</a>
             {% endif %}
         </ul>
 
