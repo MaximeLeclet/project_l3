@@ -75,6 +75,12 @@ a.btn-top:hover
     transition:box-shadow 0.5s;
 }
 
+.col-centered{
+    float: none;
+    margin: 0 auto;
+    width: 300px;
+}
+
 /* Table css End */
 
 
