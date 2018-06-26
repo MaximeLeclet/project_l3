@@ -15,6 +15,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface, \Serializable
 {
+
+    /**
+     * @ORM\ManyToOne(targetEntity=App\Entity\Team)
+     */
+    private $team;
+
     /**
      * @var int
      *
@@ -55,6 +61,13 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=191)
      */
     private $password;
+
+    /**
+    * @var int
+
+    * @ORM\Column(type="integer")
+    */
+    private $points;
 
     /**
      * @var array
@@ -127,6 +140,26 @@ class User implements UserInterface, \Serializable
     public function setRoles(array $roles): void
     {
         $this->roles = $roles;
+    }
+
+    public function getPoints(): ?int
+    {
+        return $this->points;
+    }
+
+    public function setPoints(int $points): void
+    {
+        $this->points = $points;
+    }
+
+    public function getTeam(): ?Team
+    {
+        return $this->points;
+    }
+
+    public function setTeam(Team $team): void
+    {
+        $this->team = $team;
     }
 
     /**
