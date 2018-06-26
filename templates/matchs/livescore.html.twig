@@ -23,15 +23,17 @@
             {% for equipe,match in equipes %}
                 <tr row-content>
                     <td class="text-center">{{ i }}</td>
-                    <td class="text-center">{{ match.date}}</td>
-                    <td class="text-center">{{ (match.live == true ) ? '<span class="label label-success">Non</span>' : '<span class="label label-danger">Non</span>' }} </td>
+                    <td class="text-center">{{ match.date }}</td>
+                    <td class="text-center">{{ (match.live == true) ? '<span class="label label-success">Non</span>' : '<span class="label label-danger">Non</span>' }} </td>
                     <td class="text-center">{{ equipe }}</td>
-                    <td class="text-center">  {{ match.score.0 }} - {{ match.score.1 }} </td>
+                    <td class="text-center">  {{ (match.score != null) ? match.score.0 - match.score.1 : '' }} </td>
                     <td class="text-center">{{ match.vs }}</td>
                     <td class="text-center">
-                        <a style="margin-right: 15px;" href="{{ path('app_pari_new', {'equipe1':equipe, 'equipe2':match.vs }) }}" class="btn btn-top btn-primary btn-success pull-right">
-                            <span class="glyphicon glyphicon-eur"></span> &nbsp Parier
-                        </a>
+                        {% if ((match.score == null) and ("now"|date('d/m/Y') < match.date|date('d/m/Y')) and (match.live == false)) %}
+                            <a style="margin-right: 15px;" href=" {{ path('app_pari_new', {'equipe1':equipe, 'equipe2':match.vs }) }}" class="btn btn-top btn-primary btn-success pull-right">
+                                <span class="glyphicon glyphicon-eur"></span> Parier
+                            </a>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}

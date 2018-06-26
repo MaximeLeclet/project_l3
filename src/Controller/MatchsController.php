@@ -21,10 +21,19 @@ class MatchsController extends Controller
      */
     function index() {
 
+        $datas =  json_decode($this->mooc(),true);
+        return $this->render("matchs/livescore.html.twig", array('results'=>$datas));
+/*
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'http://daudenthun.fr/api/listing');
+        $res = $client->request('GET', 'http://http://daudenthun.fr/api/listing');
         $datas =  json_decode($res->getBody(),true);
         return $this->render("matchs/livescore.html.twig", array('results'=>$datas));
+*/
+    }
+
+    function mooc()
+    {
+        return file_get_contents("/var/www/html/project_l3/src/mooc/fakeFights.json");
     }
 
 }
