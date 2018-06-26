@@ -28,13 +28,13 @@ class PariController extends Controller
         $post = new Pari();
 
         $urls = explode('/', $request->getUri());
-        $equipe1 = $urls[3];
-        $equipe2 = $urls[4];
+        $equipe_1 = $urls[5];
+        $equipe_2 = $urls[6];
 
 
         $form = $this->createFormBuilder($post)
-            ->add('equipe1', TextType::class, array('label' => $equipe1))
-            ->add('equipe2', TextType::class, array('label' => $equipe2))
+            ->add('equipe1', TextType::class, array('label' => 'Equipe No 1', 'data' => $equipe_1))
+            ->add('equipe2', TextType::class, array('label' => 'Equipe No 2', 'data' => $equipe_2))
             ->add('score_equipe1', TextType::class)
             ->add('score_equipe2', TextType::class)
             ->add('validate', SubmitType::class, array('label' => 'Valider le pari'))
