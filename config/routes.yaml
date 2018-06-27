@@ -28,6 +28,10 @@ app_team_bcrypt:
   path: /teams/bycrpt/{idTeam<\d+>}
   controller: App\Controller\TeamController::bcryptAction
 
+app_team_join:
+  path: /teams/join/{idTeam<\d+>}
+  controller: App\Controller\TeamController::joinAction
+
 app_user_index:
   path: /user
   controller: App\Controller\UserController::indexAction

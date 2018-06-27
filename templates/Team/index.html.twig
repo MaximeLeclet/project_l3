@@ -12,14 +12,24 @@
                 <thead>
                 <tr class="row-name">
                     <th class="">Nom</th>
-                    {#<th class=""></th>#}
+                    <th class=""></th>
                 </tr>
                 </thead>
                 <tbody>
                     {% for team in teams %}
                         <tr row-content>
                             <td class="">{{ team.nomTeam }}</td>
-                            {#<td></td>#}
+                            <td>
+                                {% if team.nomTeam == app.user.team.nomTeam %}
+                                    <a href="#" class="btn btn-top btn-primary btn-success pull-right">
+                                        Voir team
+                                    </a>
+                                {% else %}
+                                    <a href="{{ path('app_team_join', {'idTeam': team.id}) }}" class="btn btn-top btn-primary btn-success pull-right">
+                                        Rejoindre team
+                                    </a>
+                                {% endif %}
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>

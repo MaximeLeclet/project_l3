@@ -33,7 +33,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=191)
+     * @ORM\Column(type="string", length=190)
      * @Assert\NotBlank()
      */
     private $fullName;
@@ -154,7 +154,7 @@ class User implements UserInterface, \Serializable
 
     public function getTeam(): ?Team
     {
-        return $this->points;
+        return $this->team;
     }
 
     public function setTeam(Team $team): void

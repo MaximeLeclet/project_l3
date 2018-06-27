@@ -78,6 +78,26 @@ class TeamController extends Controller
 
     }
 
+    function joinAction($idTeam)
+    {
+
+        if (!$this->getUser()) return $this->redirectToRoute('security_login');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $team = $em->getRepository("App\Entity\Team")->find($idTeam);
+
+        if($team) {
+
+            $this->getUser()->setTeam($team);
+            $em->flush();
+
+        }
+
+        return $this->redirectToRoute('app_team_index');
+
+    }
+
     function generateRandomString($length = 6) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
