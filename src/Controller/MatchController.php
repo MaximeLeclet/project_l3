@@ -30,7 +30,7 @@ class MatchController extends Controller
 
         //$datas =  json_decode($this->mooc(),true);
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'http://http://daudenthun.fr/api/listing');
+        $res = $client->request('GET', 'http://daudenthun.fr/api/listing');
         $datas =  json_decode($res->getBody(),true);
         $livescore = array();
         $i = 0;
