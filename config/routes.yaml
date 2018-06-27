@@ -9,10 +9,6 @@ app_pari_index:
 app_pari_new:
   path: /paris/new/{equipe1}/{equipe2}
   controller: App\Controller\PariController::newAction
-    requirements:
-      equipe1: '\d+'
-      equipe2: '\d+'
-
 
 app_pari_edit:
     path:       /paris/modif/{idpari}
