@@ -1,28 +1,25 @@
 {% extends "base.html.twig" %}
 
-{% block title %}
-
-    Teams
-
-{% endblock %}
+{% block title %} Teams {% endblock %}
 
 {% block body %}
 
+    <br><br>
     <div class="container">
-        <br><br><div class="row">
-            <table id="livescore" class="table table-striped">
+        <br><br>
+        <div class="row">
+            <table id="livescore" class="dataTable table table-striped">
                 <thead>
-                    <tr class="row-name">
-                        <th>#</th>
-                        <th class="">Nom</th>
-                        <th class=""></th>
-                    </tr>
+                <tr class="row-name">
+                    <th class="">Nom</th>
+                    {#<th class=""></th>#}
+                </tr>
                 </thead>
                 <tbody>
                     {% for team in teams %}
                         <tr row-content>
                             <td class="">{{ team.nomTeam }}</td>
-                            <td></td>
+                            {#<td></td>#}
                         </tr>
                     {% endfor %}
                 </tbody>

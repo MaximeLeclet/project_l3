@@ -26,6 +26,8 @@ class TeamController extends Controller
     function newAction(Request $request)
     {
 
+        if (!$this->getUser()) {return $this->redirectToRoute('security_login'); }
+
         $em = $this->getDoctrine()->getManager();
 
         $team = new Team();
@@ -40,17 +42,50 @@ class TeamController extends Controller
 
             $team = $form->getData();
 
-            $em = $this->getDoctrine()->getManager();
+            $user = $this->getUser();
+
+            $user->setTeam($team);
+
+            $bcrypt = self::generateRandomString(6);
+
+            $team->setBcrypt($bcrypt);
+
             $em->persist($team);
             $em->flush();
 
-            return $this->redirectToRoute('app_team_index');
+            return $this->redirectToRoute("app_team_bcrypt", array(
+                "idTeam" => $team->getid()
+            ));
+
         }
 
         return $this->render("Team/new.html.twig", array(
             'form' => $form->createView()
         ));
 
+    }
+
+    function bcryptAction($idTeam)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $team = $em->getRepository("App\Entity\Team")->find($idTeam);
+
+        return $this->render("Team/bcrypt.html.twig", array(
+            'bcrypt' => $team->getBcrypt()
+        ));
+
+    }
+
+    function generateRandomString($length = 6) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 
 }

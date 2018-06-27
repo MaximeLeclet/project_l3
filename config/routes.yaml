@@ -18,6 +18,10 @@ app_team_new:
   path: /teams/new
   controller: App\Controller\TeamController::newAction
 
+app_team_bcrypt:
+  path: /teams/bycrpt/{idTeam<\d+>}
+  controller: App\Controller\TeamController::bcryptAction
+
 app_user_index:
   path: /user
   controller: App\Controller\UserController::indexAction

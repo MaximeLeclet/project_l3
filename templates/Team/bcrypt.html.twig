@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-1 col-centered">
+            <div class="well">
+
+                <legend><i class="" aria-hidden="true"></i> Voici le mot de passe de votre team </legend>
+
+                {{ bcrypt }}
+
+                <a href="{{ path('app_team_index') }}" class="btn btn-primary">OK !</a>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
