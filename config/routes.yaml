@@ -6,10 +6,6 @@ app_accueil_index:
   path: /
   controller: App\Controller\MatchsController::index
 
-app_pari_index:
-  path: /pari
-  controller: App\Controller\PariController::indexAction
-
 app_pari_new:
   path: /pari/new/{equipe1}/{equipe2}
   controller: App\Controller\PariController::newAction
@@ -28,6 +24,6 @@ app_posts_views :
  # path: /users
   #controller: App\Controller\UserController::indexAction
 
-#pp_user_new:
+#app_user_new:
  # path: /users/new
   #controller: App\Controller\UserController::newAction

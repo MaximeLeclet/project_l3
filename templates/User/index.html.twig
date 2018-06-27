@@ -8,6 +8,15 @@
 
 {% block body %}
 
+    <table>
+    {% for pari in paris %}
+        <tr row-content>
+            <td class="text-center">{{ pari.equipe1 }} {{ pari.equipe2 }}</td>
+            <td class="text-center">{{ pari.score_equipe1 }} {{ pari.score_equipe2 }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
     Ceci est l'index des users
 
 {% endblock %}

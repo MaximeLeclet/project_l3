@@ -26,13 +26,14 @@ class PariController extends Controller
     {
         if (!$this->getUser()) {return $this->redirectToRoute('security_login'); }
 
+        $em = $this->getDoctrine()->getManager();
+
        // just setup a fresh $post object (remove the dummy data)
         $pari = new Pari();
 
         $urls = explode('/', $request->getUri());
         $equipe_1 = $urls[5];
         $equipe_2 = $urls[6];
-
 
         $form = $this->createFormBuilder($pari)
             ->add('equipe1', TextType::class, array('label' => 'Equipe No 1', 'data' => $equipe_1))
@@ -45,24 +46,29 @@ class PariController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$post` variable has also been updated
-            $pari = $form->getData();
 
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
-            $entityManager = $this->getDoctrine()->getManager();
+            $pari = $form->getData();
 
             $pari->setUser($this->getUser());
 
-            $entityManager->persist($pari);
-            $entityManager->flush();
+            $em->persist($pari);
+            $em->flush();
 
-            return $this->redirectToRoute('app_accueil_index');
+            $user = $em
+                ->getRepository(Customer::class, 'user')
+                ->find($this->getUser()->getId());
+
+            $userParis = $em
+                ->getRepository(Customer::class, 'pari')
+                ->findOneBy(['user' => $this->getUser()]);
+
+            return $this->render('User/index.html.twig',  array(
+                'user' => $user),  array(
+                'paris' => $userParis));
         }
 
         return $this->render('Pari/new.html.twig',  array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
             ));
     }
 
