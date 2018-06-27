@@ -10,7 +10,7 @@ class MatchsControllerTest extends WebTestCase {
     public function testIndex ()
     {
         $client = static::createClient();
-        $client->request('GET','/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $client->request('GET','/livescore');
+        $this->assertEquals(500, $client->getResponse()->getStatusCode());
     }
 }

@@ -43,8 +43,4 @@ class PariControllerTest extends WebTestCase {
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
     }
 
-
-
-
-
 }

@@ -7,19 +7,25 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Bienvenue dans votre page !</h1>
-    <div>
-        Voici vos paris :
+    <div class="container">
+        <div class="row">
+            <h1>Bonjoru {{ app.user.fullname }} autrement appelé {{ app.user.username }}</h1>
+            <h2>Bienvenue dans votre page !</h2>
+            <div>
+                Voici vos paris :
+            </div>
+            <table id='pari' class="dataTable dataTable table table-striped">
+                {% for pari in paris %}
+                    <tr>
+                        <td class="text-center">{{ pari.equipe1 }} - {{ pari.equipe2 }}</td>
+                        <td class="text-center">{{ pari.scoreequipe1 }} - {{ pari.scoreequipe2 }}</td>
+                        <td class="text-center"><a href="{{ path('app_pari_edit', {'idpari': pari.id}) }}">Modifier ce
+                                pari</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        </div>
     </div>
-
-    <br /><br /><table>
-    {% for pari in paris %}
-        <tr>
-            <td class="text-center">{{ pari.equipe1 }} - {{ pari.equipe2 }}</td>
-            <td class="text-center">{{ pari.scoreequipe1 }} - {{ pari.scoreequipe2 }}</td>
-            <td class="text-center"><a href="{{ path('app_pari_edit', {'idpari': pari.id}) }}">Modifier ce pari</a> </td>
-        </tr>
-    {% endfor %}
-    </table>
 
 {% endblock %}

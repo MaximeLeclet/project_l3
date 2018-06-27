@@ -2,6 +2,10 @@ app_accueil_index:
   path: /
   controller: App\Controller\MatchController::indexAction
 
+app_accueil2_index:
+  path: /livescore
+  controller: App\Controller\MatchController::indexAction
+
 app_pari_index:
   path: /paris
   controller: App\Controller\PariController::indexAction
