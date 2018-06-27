@@ -2,16 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Project L3{% endblock %}</title>
         {% block stylesheets %}
 
         {% endblock %}
     </head>
 
     <body>
-        {{ include('common/header.html.twig') }}
+        {{ include('header.html.twig') }}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
-        {{ include('common/footer.html.twig') }}
+        {{ include('footer.html.twig') }}
     </body>
 </html>

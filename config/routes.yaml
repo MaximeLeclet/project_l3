@@ -1,6 +1,6 @@
 app_accueil_index:
   path: /
-  controller: App\Controller\MatchController::index
+  controller: App\Controller\MatchController::indexAction
 
 app_pari_index:
   path: /paris
@@ -19,5 +19,9 @@ app_team_new:
   controller: App\Controller\TeamController::newAction
 
 app_user_index:
-  path: /user/
-  controller : App\Controller\UserController::indexAction
+  path: /user
+  controller: App\Controller\UserController::indexAction
+
+user_registration:
+  path: /register
+  controller: App\Controller\RegistrationController::registerAction

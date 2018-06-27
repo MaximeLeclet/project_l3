@@ -12,16 +12,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-/**
- * @Route("/posts")
- */
+
 class MatchController extends Controller
 {
     /**
      *
      * return array
      */
-    function index() {
+    function indexAction() {
 
         $datas =  json_decode($this->mooc(),true);
 
