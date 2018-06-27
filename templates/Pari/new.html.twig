@@ -8,8 +8,6 @@
 
 {% block body %}
 
-
-
         <div class="row">
             <div class="col-xs-offset-3 col-xs-6">
                 <div class="panel panel-info">
@@ -23,14 +21,14 @@
                             <div class="col-xs-6">
                                 <div class="form-group">
                                     {{ form_label(form.equipe1, "Equipe No 1") }}
-                                    {{ form_widget(form.equipe1, {'disabled': 'true'}) }}
+                                    {{ form_widget(form.equipe1) }}
                                     {{ form_errors(form.equipe1) }}
                                 </div>
                             </div>
                             <div class="col-xs-6">
                                 <div class="form-group">
                                     {{ form_label(form.equipe2, "Equipe No 2") }}
-                                    {{ form_widget(form.equipe2, {'disabled': 'true'}) }}
+                                    {{ form_widget(form.equipe2) }}
                                     {{ form_errors(form.equipe2) }}
                                 </div>
                             </div>

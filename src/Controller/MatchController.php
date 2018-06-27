@@ -21,6 +21,10 @@ class MatchController extends Controller
      */
     function indexAction() {
 
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('security_login');
+        }
+
 
         $em = $this->getDoctrine()->getManager();
 
