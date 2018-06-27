@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * @Route("/posts")
  */
-class MatchsController extends Controller
+class MatchController extends Controller
 {
     /**
      *
@@ -42,7 +42,7 @@ class MatchsController extends Controller
             $i++;
         }
 
-        return $this->render("matchs/livescore.html.twig", array('results'=>$livescore));
+        return $this->render("Matchs/index.html.twig", array('results'=>$livescore));
     }
 
     function mooc()

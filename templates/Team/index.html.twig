@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+
+    Teams
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <br><br><div class="row">
+            <table id="livescore" class="table table-striped">
+                <thead>
+                    <tr class="row-name">
+                        <th>#</th>
+                        <th class="">Nom</th>
+                        <th class=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for team in teams %}
+                        <tr row-content>
+                            <td class="">{{ team.nomTeam }}</td>
+                            <td></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="{{ path('app_team_new') }}" class="btn btn-info ">Créer une nouvelle team</a>
+
+{% endblock %}
