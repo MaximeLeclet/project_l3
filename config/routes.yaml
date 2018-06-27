@@ -1,29 +1,23 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
-
 app_accueil_index:
   path: /
-  controller: App\Controller\MatchsController::index
+  controller: App\Controller\MatchController::index
+
+app_pari_index:
+  path: /paris
+  controller: App\Controller\PariController::indexAction
 
 app_pari_new:
-  path: /pari/new/{equipe1}/{equipe2}
+  path: /paris/new/{equipe1}/{equipe2}
   controller: App\Controller\PariController::newAction
 
-app_posts_index :
-    path : /livescore
-    controller : App\Controller\MatchsController::index
+app_team_index:
+  path: /teams
+  controller: App\Controller\TeamController::indexAction
 
-app_posts_views :
-    path : /livescore/team/{id}
-    controller : App\Controller\PostsController::viewPost
-    requirements:
-            id: \d+
+app_team_new:
+  path: /teams/new
+  controller: App\Controller\TeamController::newAction
 
-#app_user_index:
- # path: /users
-  #controller: App\Controller\UserController::indexAction
-
-#app_user_new:
- # path: /users/new
-  #controller: App\Controller\UserController::newAction
+app_user_index:
+  path: /user/
+  controller : App\Controller\UserController::indexAction

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-1 col-centered">
+            <div class="well">
+
+                <legend><i class="" aria-hidden="true"></i> Ajouter une équipe</legend>
+
+                {{ form_start(form) }}
+
+                <div class="form-group">
+                    {{ form_label(form.nom_team) }}
+                    <br>
+                    {{ form_widget(form.nom_team) }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Valider
+                </button>
+
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
