@@ -8,15 +8,19 @@
 
 {% block body %}
 
-    <table>
+    <div>
+        Bienvenue dans votre page !<br />
+        Voici vos paris :
+    </div>
+
+    <br /><br /><table>
     {% for pari in paris %}
-        <tr row-content>
-            <td class="text-center">{{ pari.equipe1 }} {{ pari.equipe2 }}</td>
-            <td class="text-center">{{ pari.score_equipe1 }} {{ pari.score_equipe2 }}</td>
+        <tr>
+            <td class="text-center">{{ pari.equipe1 }} - {{ pari.equipe2 }}</td>
+            <td class="text-center">{{ pari.scoreequipe1 }} - {{ pari.scoreequipe2 }}</td>
+            <td class="text-center"><a href="{{ path('app_pari_edit', {'idpari': pari.id}) }}">Modifier ce pari</a> </td>
         </tr>
     {% endfor %}
     </table>
-
-    Ceci est l'index des users
 
 {% endblock %}

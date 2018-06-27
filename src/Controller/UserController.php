@@ -11,12 +11,18 @@ class UserController extends Controller
     function indexAction()
     {
 
-        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->render("User/index.html.twig", array(
-            'user' => $user
+        $user = $em->getRepository("App\Entity\User")->find($this->getUser()->getId());
+
+        $userParis = $em->getRepository("App\Entity\Pari")->findBy([
+            'user' => $this->getUser()
+        ]);
+
+        return $this->render('User/index.html.twig', array(
+            'user' => $user,
+            'paris' => $userParis
         ));
-
     }
 
 }

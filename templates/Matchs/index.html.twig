@@ -19,34 +19,48 @@
                     <th></th>
                     <th></th>
                 </tr>
-                </thead>
-                <tbody>
-                    {% set i = 1 %}
-                    {% for game in results %}
-                        <tr row-content>
-                            <td class="text-center">{{ i }}</td>
-                            <td class="text-center">{{ game.date|date("d/m/Y") }}</td>
-                            <td class="text-center">{{ (game.live == true ) ? '<span class="label label-success">Oui</span>' : '<span class="label label-danger">Non</span>' }} </td>
-                            <td class="text-center">{{ game.team1 }}</td>
-                            <td class="text-center">  {{ game.score1 }} - {{ game.score2 }} </td>
-                            <td class="text-center">{{ game.team2 }}</td>
-                            <td class="text-center">
-                                {%  if (not game.live and not game.score1 and not game.score2 and (game.date|date('Y-m-d') > "now"|date('Y-m-d'))) %}
-                                    <a style="margin-right: 15px;" href="{{ path('app_pari_new', {'equipe1':game.team1, 'equipe2':game.team2 }) }}" class="btn btn-top btn-primary btn-success pull-right">
-                                        <span class="glyphicon glyphicon-eur"></span> &nbsp Parier
-                                    </a>
-                                {% else %}
-                                    <a disabled style="margin-right: 15px;" href="#" class="btn btn-top btn-primary btn-success pull-right">
-                                        <span class="glyphicon glyphicon-eur"></span> &nbsp Pari Non disponible
-                                    </a>
-                                {%  endif %}
-                            </td>
-                        </tr>
-                        {%  set i = i + 1 %}
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+            </thead>
+            <tbody>
+            {% set i = 1 %}
+            {% for game in results %}
+                <tr row-content>
+                    <td class="text-center">{{ i }}</td>
+                    <td class="text-center">{{ game.date|date("d/m/Y") }}</td>
+                    <td class="text-center">{{ (game.live == true ) ? '<span class="label label-success">Oui</span>' : '<span class="label label-danger">Non</span>' }} </td>
+                    <td class="text-center">{{ game.team1 }}</td>
+                    <td class="text-center">  {{ game.score1 }} - {{ game.score2 }} </td>
+                    <td class="text-center">{{ game.team2 }}</td>
+                    <td class="text-center">
+                        {%  if (not game.live and not game.score1 and not game.score2 and (game.date|date('Y-m-d') > "now"|date('Y-m-d'))) %}
+                            {% set marqueur = 0 %}
+                            {% set idpari   = 0 %}
+                            {% for pari in userParis %}
+                                {% if game.team1 ==  pari.equipe1 and game.team2 == pari.equipe2 %}
+                                    {% set marqueur = 1 %}
+                                    {% set idpari = pari.id %}
+                                {% endif %}
+                            {% endfor %}
+                            {%  if  marqueur == 1 %}
+                                <a style="margin-right: 15px;" href="{{ path('app_pari_edit', {'idpari':idpari}) }}" class="btn btn-top btn-primary btn-success pull-right">
+                                    <span class="glyphicon glyphicon-eur"></span> &nbsp Modifier
+                                </a>
+                            {% else %}
+                                <a style="margin-right: 15px;" href="{{ path('app_pari_new', {'equipe1':game.team1, 'equipe2':game.team2 }) }}" class="btn btn-top btn-primary btn-success pull-right">
+                                    <span class="glyphicon glyphicon-eur"></span> &nbsp Parier
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            <a disabled style="margin-right: 15px;" href="#" class="btn btn-top btn-primary btn-success pull-right">
+                                <span class="glyphicon glyphicon-eur"></span> &nbsp Pari Non disponible
+                            </a>
+                        {%  endif %}
+                    </td>
+                </tr>
+                {%  set i = i + 1 %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
     </div>
 
 {% endblock %}

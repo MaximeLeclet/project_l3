@@ -2,19 +2,17 @@
 
 namespace App\Tests\Controller;
 
+use App\Controller\MatchController;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class PariControllerTest extends WebTestCase {
 
     // idée de test pour les paris. Importé depuis ce que l'on a fait il y a 21 jours. ;)
 
-    public function test()
+    public function testPari()
     {
         $client = static::createClient();
-        //$crawler = $client->request('Get', '/livescore');
-        $crawler = $client->request('POST','/submit', array('results'=>$livescore));
-
-        $datas =  json_decode($this->mooc(),true);
+        $datas =  json_decode(MatchController::mooc(),true);
         $livescore = array();
         $i = 0;
         foreach ($datas as $teams){
@@ -27,11 +25,26 @@ class PariControllerTest extends WebTestCase {
                 $livescore[$i]['live'] = $match['live'];
             }
             $i++;
-        }
 
-        $this->assertGreaterThan(1,
+        }
+        $crawler = $client->request('POST','/submit', array('results'=>$livescore));
+        $this->assertGreaterThan(0,
             $crawler->filter('html:contains("Parier")')->count()
         );
 
+
+
     }
+
+    public function testIndex ()
+    {
+        $client = static::createClient();
+        $client->request('GET','/paris/new/Angleterre/Belgique');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+    }
+
+
+
+
+
 }
