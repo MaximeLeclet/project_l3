@@ -11,8 +11,6 @@ class PariControllerTest extends WebTestCase {
     public function test()
     {
         $client = static::createClient();
-        //$crawler = $client->request('Get', '/livescore');
-        $crawler = $client->request('POST','/submit', array('results'=>$livescore));
 
         $datas =  json_decode($this->mooc(),true);
         $livescore = array();
@@ -29,6 +27,7 @@ class PariControllerTest extends WebTestCase {
             $i++;
         }
 
+        $crawler = $client->request('POST','/submit', array('results'=>$livescore));
         $this->assertGreaterThan(1,
             $crawler->filter('html:contains("Parier")')->count()
         );
