@@ -40,7 +40,13 @@ class MatchController extends Controller
             $i++;
         }
 
-        return $this->render("Matchs/index.html.twig", array('results'=>$livescore));
+        $em = $this->getDoctrine()->getManager();
+
+        $userParis = $em->getRepository("App\Entity\Pari")->findBy([
+            'user' => $this->getUser()
+        ]);
+
+        return $this->render("Matchs/index.html.twig", array('results'=>$livescore, 'userParis'=>$userParis));
     }
 
     function mooc()

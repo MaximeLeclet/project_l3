@@ -5,6 +5,8 @@ namespace App\Controller;
 
 use App\Entity\Pari;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -40,8 +42,8 @@ class PariController extends Controller
         $form = $this->createFormBuilder($pari)
         ->add('equipe1', TextType::class, array('label' => 'Equipe No 1', 'data' => $equipe_1))
         ->add('equipe2', TextType::class, array('label' => 'Equipe No 2', 'data' => $equipe_2))
-        ->add('score_equipe1', TextType::class)
-        ->add('score_equipe2', TextType::class)
+        ->add('score_equipe1', NumberType::class)
+        ->add('score_equipe2', NumberType::class)
         ->getForm();
 
         $form->handleRequest($request);
@@ -74,31 +76,37 @@ class PariController extends Controller
 
     function ModifAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
         $urls = explode('/', $request->getUri());
         $id = $urls[5];
+
+        $em = $this->getDoctrine()->getManager();
 
         $currentPari = $em->getRepository("App\Entity\Pari")->findOneBy([
             'id' => $id
         ]);
 
-        $form = $this->createFormBuilder($currentPari)
+        $newPari = new Pari();
+
+        $form = $this->createFormBuilder($newPari)
             ->add('equipe1', TextType::class, array('label' => 'Equipe No 1', 'data' => $currentPari->getEquipe1()))
             ->add('equipe2', TextType::class, array('label' => 'Equipe No 2', 'data' => $currentPari->getEquipe2()))
-            ->add('score_equipe1', TextType::class, array('label' => 'Score Equipe No 1', 'data' => $currentPari->getScoreEquipe1()))
-            ->add('score_equipe2', TextType::class, array('label' => 'Score Equipe No 1', 'data' => $currentPari->getScoreEquipe2()))
+            ->add('score_equipe1', IntegerType::class, array('label' => 'Score Equipe No 1', 'data' => $currentPari->getScoreEquipe1()))
+            ->add('score_equipe2', IntegerType::class, array('label' => 'Score Equipe No 1', 'data' => $currentPari->getScoreEquipe2()))
             ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $pari = $form->getData();
+            $formDatas = $form->getData();
 
-            $pari->setUser($this->getUser());
+            $currentPari->setScoreEquipe1($formDatas->getScoreEquipe1());
+            $currentPari->setScoreEquipe2($formDatas->getScoreEquipe2());
+            $currentPari->setUser($this->getUser());
 
-            $em->persist($pari);
+            $currentPari->setUser($this->getUser());
+
+            $em->persist($currentPari);
             $em->flush();
 
             $user = $em->getRepository("App\Entity\User")->find($this->getUser()->getId());
