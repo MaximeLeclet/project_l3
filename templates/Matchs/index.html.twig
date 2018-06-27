@@ -12,7 +12,7 @@
                 <tr class="row-name">
                     <th>#</th>
                     <th class="text-center">Date</th>
-                    <th class="text-center">Live</th>
+                    <th class="text-center"></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -26,7 +26,7 @@
                 <tr row-content>
                     <td class="text-center">{{ i }}</td>
                     <td class="text-center">{{ game.date|date("d/m/Y") }}</td>
-                    <td class="text-center">{{ (game.live == true ) ? '<span class="label label-success">Oui</span>' : '<span class="label label-danger">Non</span>' }} </td>
+                    <td class="text-center">{{ (game.live == true ) ? '<span class="label label-success">En cours</span>' : '' }} </td>
                     <td class="text-center">{{ game.team1 }}</td>
                     <td class="text-center">  {{ game.score1 }} - {{ game.score2 }} </td>
                     <td class="text-center">{{ game.team2 }}</td>
