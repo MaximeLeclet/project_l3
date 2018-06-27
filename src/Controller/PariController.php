@@ -40,11 +40,11 @@ class PariController extends Controller
         $equipe_2 = $urls[6];
 
         $form = $this->createFormBuilder($pari)
-        ->add('equipe1', TextType::class, array('label' => 'Equipe No 1', 'data' => $equipe_1))
-        ->add('equipe2', TextType::class, array('label' => 'Equipe No 2', 'data' => $equipe_2))
-        ->add('score_equipe1', NumberType::class)
-        ->add('score_equipe2', NumberType::class)
-        ->getForm();
+            ->add('equipe1', TextType::class, array('label' => 'Equipe No 1', 'data' => $equipe_1))
+            ->add('equipe2', TextType::class, array('label' => 'Equipe No 2', 'data' => $equipe_2))
+            ->add('score_equipe1', NumberType::class)
+            ->add('score_equipe2', NumberType::class)
+            ->getForm();
 
         $form->handleRequest($request);
 

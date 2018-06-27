@@ -21,11 +21,11 @@ class MatchController extends Controller
      */
     function indexAction() {
 
-        $datas =  json_decode($this->mooc(),true);
+        //$datas =  json_decode($this->mooc(),true);
 
-        //$client = new \GuzzleHttp\Client();
-        //$res = $client->request('GET', 'http://http://daudenthun.fr/api/listing');
-        //$datas =  json_decode($res->getBody(),true);
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'http://daudenthun.fr/api/listing');
+        $datas =  json_decode($res->getBody(),true);
         $livescore = array();
         $i = 0;
         foreach ($datas as $teams){
@@ -49,7 +49,7 @@ class MatchController extends Controller
         return $this->render("Matchs/index.html.twig", array('results'=>$livescore, 'userParis'=>$userParis));
     }
 
-    function mooc()
+    static function mooc()
     {
         return file_get_contents("/var/www/html/project_l3/src/mooc/fakeFights.json");
     }
